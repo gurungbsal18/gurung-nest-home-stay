@@ -50,7 +50,7 @@ function WhySection() {
               className="flex flex-col items-start justify-center gap-4 rounded-lg p-6 shadow-lg duration-800 ease-in-out hover:border hover:border-primary hover:shadow-2xl"
             >
               <div className="flex w-full justify-center">
-                <Icon className="h-10 w-10 rounded-full bg-primary/30 p-2 text-primary" />
+                <Icon className="h-10 w-10 rounded-full bg-primary/10 p-2 text-primary" />
               </div>
 
               <div className="flex flex-col items-center gap-2 text-center">
