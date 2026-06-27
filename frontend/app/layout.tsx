@@ -4,6 +4,7 @@ import "./globals.css"
 import { ThemeProvider } from "@/components/theme-provider"
 import { cn } from "@/lib/utils";
 import MainMenu from "@/components/MainMenu";
+import Footer from "@/components/Footer";
 
 const playfairDisplayHeading = Playfair_Display({
   subsets: ["latin"],
@@ -37,6 +38,7 @@ export default function RootLayout({
       <body suppressHydrationWarning>
         <MainMenu/>
         <ThemeProvider>{children}</ThemeProvider>
+        <Footer/>
       </body>
     </html>
   )

@@ -1,5 +1,7 @@
 import AboutSection from "@/components/AboutSection"
 import HeroSection from "@/components/HeroSection"
+import PanoramicExperience from "@/components/PanoramicExperience"
+import Rooms from "@/components/Rooms"
 import { Button } from "@/components/ui/button"
 import WhySection from "@/components/WhySection"
 
@@ -15,6 +17,8 @@ export default function Page() {
           <AboutSection />
           <WhySection />
         </div>
+        <Rooms/>
+        <PanoramicExperience/>
       </div></>
   )
 }
