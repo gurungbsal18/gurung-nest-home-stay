@@ -3,14 +3,18 @@ import { Geist, Geist_Mono, DM_Sans, Playfair_Display } from "next/font/google"
 import "./globals.css"
 import { ThemeProvider } from "@/components/theme-provider"
 import { cn } from "@/lib/utils";
+import MainMenu from "@/components/MainMenu";
 
-const playfairDisplayHeading = Playfair_Display({subsets:['latin'],variable:'--font-heading'});
+const playfairDisplayHeading = Playfair_Display({
+  subsets: ["latin"],
+  variable: "--font-playfair-display",
+})
 
-const dmSans = DM_Sans({subsets:['latin'],variable:'--font-sans'})
+const dmSans = DM_Sans({ subsets: ["latin"], variable: "--font-dm-sans" })
 
 const fontMono = Geist_Mono({
   subsets: ["latin"],
-  variable: "--font-mono",
+  variable: "--font-geist-mono",
 })
 
 export default function RootLayout({
@@ -22,9 +26,16 @@ export default function RootLayout({
     <html
       lang="en"
       suppressHydrationWarning
-      className={cn("antialiased", fontMono.variable, "font-sans", dmSans.variable, playfairDisplayHeading.variable)}
+      className={cn(
+        "antialiased",
+        fontMono.variable,
+        "font-sans",
+        dmSans.variable,
+        playfairDisplayHeading.variable,
+      )}
     >
-      <body>
+      <body suppressHydrationWarning>
+        <MainMenu/>
         <ThemeProvider>{children}</ThemeProvider>
       </body>
     </html>
