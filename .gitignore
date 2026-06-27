@@ -1,0 +1,33 @@
+# dependencies
+node_modules/
+
+# Next.js
+frontend/.next/
+frontend/out/
+
+# Express
+backend/node_modules/
+
+# env
+.env
+frontend/.env*
+backend/.env*
+
+# logs
+*.log
+
+# mac
+.DS_Store
+
+# windows
+Thumbs.db
+
+# vscode
+.vscode
+
+# turbo
+.turbo
+
+# build
+dist
+build
