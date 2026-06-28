@@ -24,7 +24,7 @@ function HeroSection() {
            <GrLocation/> RAMKOT, KATHMANDU
           </p>
           <h2 className="text-3xl md:text-4xl lg:text-6xl font-bold">Escape the City</h2>
-          <h2 className="text-3xl md:text-4xl lg:text-6xl font-bold">
+          <h2 className="text-2xl md:text-4xl lg:text-6xl font-bold">
             Experience Kathmandu from Above
           </h2>
           <p className="mt-4 w-full lg:w-5xl text-base md:text-xl">
