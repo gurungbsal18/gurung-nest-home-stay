@@ -3,8 +3,9 @@ import Link from "next/link"
 import { LuCalendarDays } from "react-icons/lu"
 import { GrLocation } from "react-icons/gr"
 import { motion, stagger, type Variants } from "framer-motion"
-import { fadeInUp, staggerContainer } from "@/lib/animation"
+import { fadeIn, fadeInUp, staggerContainer } from "@/lib/animation"
 import { ChevronDown } from "lucide-react"
+import { Button } from "./ui/button"
 
 // const locationBadgeVariants: Variants = {
 //   hidden: { opacity: 0, y: -10 },
@@ -69,20 +70,26 @@ function HeroSection() {
 
         <motion.div
           className="flex flex-col gap-2 md:flex-row md:gap-4"
-          variants={fadeInUp}
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView={"visible"}
         >
-          <Link
-            href="#"
-            className="flex h-8 items-center justify-center gap-2 rounded-xl bg-primary px-8 py-6 duration-500 ease-in-out hover:bg-primary/80 md:h-16"
-          >
-            <LuCalendarDays size={"24"} />
-            Book Your Stay
+          <Link href={""}>
+            <motion.button
+              className="flex h-8 items-center justify-center gap-2 rounded-xl bg-primary px-8 py-6 duration-500 ease-in-out hover:bg-primary/80 md:h-16"
+              variants={fadeIn}
+            >
+              <LuCalendarDays size={"24"} />
+              Book Your Stay
+            </motion.button>
           </Link>
-          <Link
-            href=""
-            className="flex h-8 items-center justify-center rounded-xl border border-white px-8 py-6 duration-500 ease-in-out hover:border-primary hover:bg-primary md:h-16"
-          >
-            Explore Rooms
+          <Link href="#">
+            <motion.button
+              className="flex h-8 items-center justify-center rounded-xl border border-white px-8 py-6 duration-500 ease-in-out hover:border-primary hover:bg-primary md:h-16"
+              variants={fadeIn}
+            >
+              Explore Rooms
+            </motion.button>
           </Link>
         </motion.div>
         <motion.div
