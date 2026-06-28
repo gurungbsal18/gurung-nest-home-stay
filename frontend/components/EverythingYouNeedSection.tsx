@@ -77,30 +77,30 @@ const db = [
 
 function EverythingYouNeedSection() {
   return (
-    <div className='container mx-auto'>
+    <div className="container mx-auto">
       <div className="mb-14 flex flex-col items-center gap-2">
         <h4 className="text-3xl font-bold sm:text-4xl lg:text-5xl">
-         <span className="text-primary">Everything</span> You Need
+          <span className="text-primary">Everything</span> You Need
         </h4>
         <p className="font-medium">
           Thoughtfully designed spaces and amenities for a comfortable stay.
         </p>
       </div>
-      
-      <div className='grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-16'>
+
+      <div className="grid grid-cols-2 gap-8 md:grid-cols-3 lg:grid-cols-6 lg:gap-16">
         {db.map((list) => {
-            const Icon = list.icon
-            return (
-              <div
-                key={list.id}
-                className="flex flex-col items-center justify-start gap-2 rounded-xl border border-border/80 p-4 duration-700 ease-in-out hover:border-primary/80 hover:shadow-sm dark:bg-secondary/20"
-              >
-                <span className="w-fit rounded-full bg-primary/10 p-4 text-primary">
-                  <Icon size={"24"} />
-                </span>
-                <p className="text-center text-sm font-medium">{list.title}</p>
-              </div>
-            )
+          const Icon = list.icon
+          return (
+            <div
+              key={list.id}
+              className="flex flex-col items-center justify-start gap-2 rounded-xl border border-border/80 p-4 duration-700 ease-in-out hover:border-primary/80 hover:shadow-sm dark:bg-secondary/20"
+            >
+              <span className="w-fit rounded-full bg-primary/10 p-4 text-primary">
+                <Icon size={"24"} />
+              </span>
+              <p className="text-center text-sm font-medium">{list.title}</p>
+            </div>
+          )
         })}
       </div>
     </div>
