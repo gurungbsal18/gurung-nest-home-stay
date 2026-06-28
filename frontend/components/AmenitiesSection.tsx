@@ -102,7 +102,7 @@ function AmenitiesSection() {
           </motion.p>
         </div>
 
-        <div className="grid grid-cols-2 gap-8 md:grid-cols-4">
+        <div className="gap:4 grid grid-cols-2 md:grid-cols-4 md:gap-8">
           {amenitiesDb.map((list) => {
             const Icon = list.icon
             return (
