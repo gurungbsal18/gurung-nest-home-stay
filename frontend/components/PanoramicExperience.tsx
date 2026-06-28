@@ -7,7 +7,7 @@ import { LuMoonStar } from "react-icons/lu";
 function PanoramicExperience() {
   return (
     <div className="container mx-auto">
-      <div className="grid grid-cols-2 gap-16 items-center">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
         <div className="col-span-1">
           <div className="rounded-xl overflow-hidden h-100">
             <img src="/images/kathmandu-view.webp" alt="kathmandu" className="h-full w-full object-cover"/>
@@ -23,7 +23,9 @@ function PanoramicExperience() {
             <p className="flex gap-3 items-center"><LuMoonStar size={"24"}/>As night falls, witness Kathmandu transform into a sea of sparkling lights.</p>
           </div>
           <p className="italic font-heading">This is more than accommodation—it's an experience.</p>
-          <Button className="w-fit" size={"lg"}>Book Your Experience</Button>
+          <div className="w-full flex justify-center md:justify-start">
+            <Button className="w-fit" size={"lg"}>Book Your Experience</Button>
+          </div>
         </div>
       </div>
     </div>

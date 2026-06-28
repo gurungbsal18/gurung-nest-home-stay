@@ -23,8 +23,8 @@ function HeroSection() {
           <p className="rounded-lg bg-yellow-500/60 px-4 py-2 text-xs font-semibold flex items-center gap-1">
            <GrLocation/> RAMKOT, KATHMANDU
           </p>
-          <h2 className="text-2xl md:text-4xl lg:text-6xl font-bold">Escape the City</h2>
-          <h2 className="text-2xl md:text-4xl lg:text-6xl font-bold">
+          <h2 className="text-3xl md:text-4xl lg:text-6xl font-bold">Escape the City</h2>
+          <h2 className="text-3xl md:text-4xl lg:text-6xl font-bold">
             Experience Kathmandu from Above
           </h2>
           <p className="mt-4 w-full lg:w-5xl text-base md:text-xl">
@@ -37,14 +37,14 @@ function HeroSection() {
         <div className="flex flex-col md:flex-row gap-2 md:gap-4">
           <Link
             href=""
-            className="flex gap-2 h-16 items-center justify-center rounded-xl bg-primary px-8 py-6 duration-500 ease-in-out hover:bg-primary/80"
+            className="flex gap-2 h-8 md:h-16 items-center justify-center rounded-xl bg-primary px-8 py-6 duration-500 ease-in-out hover:bg-primary/80"
           >
 <LuCalendarDays size={"24"}/>
             Book Your Stay
           </Link>
           <Link
             href=""
-            className="flex h-16 items-center justify-center rounded-xl border border-white px-8 py-6 duration-500 ease-in-out hover:border-primary hover:bg-primary"
+            className="flex h-8 md:h-16 items-center justify-center rounded-xl border border-white px-8 py-6 duration-500 ease-in-out hover:border-primary hover:bg-primary"
           >
             Explore Rooms
           </Link>
