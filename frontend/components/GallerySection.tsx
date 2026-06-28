@@ -7,7 +7,7 @@ function GallerySection() {
         <h4 className="text-3xl font-bold sm:text-4xl lg:text-5xl">
           Photo <span className="text-primary">Gallery</span>
         </h4>
-        <p className="font-medium">
+        <p className="text-center font-medium">
           A glimpse into the beauty of our homestay and its surroundings.
         </p>
       </div>

@@ -1,4 +1,5 @@
 import AboutSection from "@/components/AboutSection"
+import AmenitiesSection from "@/components/AmenitiesSection"
 import EverythingYouNeedSection from "@/components/EverythingYouNeedSection"
 import GallerySection from "@/components/GallerySection"
 import HeroSection from "@/components/HeroSection"
@@ -23,6 +24,7 @@ export default function Page() {
         <Rooms />
         <PanoramicExperience />
         <GallerySection />
+        <AmenitiesSection />
       </div>
     </>
   )

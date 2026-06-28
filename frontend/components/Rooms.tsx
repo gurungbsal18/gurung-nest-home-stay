@@ -108,7 +108,7 @@ function Rooms() {
         <h4 className="text-3xl font-bold sm:text-4xl lg:text-5xl">
           Your <span className="text-primary">Private</span> Retreat
         </h4>
-        <p className="font-medium">
+        <p className="text-center font-medium">
           Every space is designed for comfort, relaxation, and enjoying the
           views.
         </p>
