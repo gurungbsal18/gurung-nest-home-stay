@@ -102,19 +102,19 @@ function AmenitiesSection() {
           </motion.p>
         </div>
 
-        <div className="gap:4 grid grid-cols-2 md:grid-cols-4 md:gap-8">
+        <div className="grid grid-cols-2 gap-4 md:grid-cols-3 md:gap-8 lg:grid-cols-4">
           {amenitiesDb.map((list) => {
             const Icon = list.icon
             return (
               <motion.div
                 key={list.id}
-                className="border-border-20 flex items-center gap-4 rounded-2xl border bg-white p-4 transition-all duration-200 hover:border-primary/40 hover:bg-accent/5 dark:bg-black"
+                className="border-border-20 flex flex-col items-center justify-center gap-4 rounded-2xl border bg-white p-4 transition-all duration-200 hover:border-primary/40 hover:bg-accent/5 md:flex-row md:justify-start dark:bg-black"
                 variants={fadeInUp}
               >
                 <div className="rounded-full bg-primary/10 p-2 dark:bg-primary/30">
                   <Icon className="text-primary" />
                 </div>
-                <p>{list.title}</p>
+                <p className="text-center md:text-start">{list.title}</p>
               </motion.div>
             )
           })}
