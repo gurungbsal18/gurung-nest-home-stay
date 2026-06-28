@@ -1,15 +1,17 @@
-import React from "react"
+"use client"
+import { motion } from "framer-motion"
 import { PiMountainsLight } from "react-icons/pi"
-import { LuBedDouble } from "react-icons/lu";
-import { HiOutlineSun } from "react-icons/hi";
-import { FaMattressPillow } from "react-icons/fa6";
-import { TbSofa } from "react-icons/tb";
-import { IoTvOutline } from "react-icons/io5";
-import { RiSofaLine } from "react-icons/ri";
-import { TbFridge } from "react-icons/tb";
-import { LuMicrowave } from "react-icons/lu";
-import { LuUtensilsCrossed } from "react-icons/lu";
-import { ImInsertTemplate } from "react-icons/im";
+import { LuBedDouble } from "react-icons/lu"
+import { HiOutlineSun } from "react-icons/hi"
+import { FaMattressPillow } from "react-icons/fa6"
+import { TbSofa } from "react-icons/tb"
+import { IoTvOutline } from "react-icons/io5"
+import { RiSofaLine } from "react-icons/ri"
+import { TbFridge } from "react-icons/tb"
+import { LuMicrowave } from "react-icons/lu"
+import { LuUtensilsCrossed } from "react-icons/lu"
+import { ImInsertTemplate } from "react-icons/im"
+import { fadeInUp, staggerContainer } from "@/lib/animation"
 
 const roomdb = [
   {
@@ -103,22 +105,32 @@ const roomdb = [
 
 function Rooms() {
   return (
-    <div className="container mx-auto">
+    <motion.div
+      className="container mx-auto"
+      variants={staggerContainer}
+      initial="hidden"
+      whileInView={"visible"}
+      viewport={{ once: true, margin: "-50px" }}
+    >
       <div className="mb-14 flex flex-col items-center gap-2">
-        <h4 className="text-3xl font-bold sm:text-4xl lg:text-5xl">
+        <motion.h4
+          className="text-3xl font-bold sm:text-4xl lg:text-5xl"
+          variants={fadeInUp}
+        >
           Your <span className="text-primary">Private</span> Retreat
-        </h4>
-        <p className="text-center font-medium">
+        </motion.h4>
+        <motion.p className="text-center font-medium" variants={fadeInUp}>
           Every space is designed for comfort, relaxation, and enjoying the
           views.
-        </p>
+        </motion.p>
       </div>
 
       <div className="grid grid-cols-1 gap-16 md:grid-cols-2 lg:grid-cols-3">
         {roomdb.map((room) => (
-          <div
+          <motion.div
             key={room.id}
-            className="rounded-xl border border-gray-200 duration-700 ease-in-out hover:shadow-2xl dark:border-border/80 dark:bg-secondary/30"
+            className="overflow-hidden rounded-xl border border-gray-200 duration-700 ease-in-out hover:shadow-2xl dark:border-border/80 dark:bg-secondary/30"
+            variants={fadeInUp}
           >
             <div className="h-80 overflow-hidden">
               <img
@@ -146,10 +158,10 @@ function Rooms() {
                 })}
               </div>
             </div>
-          </div>
+          </motion.div>
         ))}
       </div>
-    </div>
+    </motion.div>
   )
 }
 

@@ -1,8 +1,10 @@
-import React from "react"
+"use client"
+import { motion } from "framer-motion"
 import { PiMountainsLight } from "react-icons/pi"
 import { TbSunset2 } from "react-icons/tb"
 import { RiHome4Line } from "react-icons/ri"
 import { PiMapPinLineLight } from "react-icons/pi"
+import { fadeInUp, staggerContainer } from "@/lib/animation"
 
 const whyDb = [
   {
@@ -37,19 +39,29 @@ const whyDb = [
 
 function WhySection() {
   return (
-    <div className="container mx-auto flex flex-col items-center gap-8">
-      <p className="w-full border-t border-border/80 pt-8 text-center font-semibold uppercase md:w-xl lg:w-5xl">
+    <motion.div
+      className="container mx-auto flex flex-col items-center gap-8"
+      variants={staggerContainer}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, margin: "-50px" }}
+    >
+      <motion.p
+        className="w-full border-t border-border/80 pt-8 text-center font-semibold uppercase md:w-xl lg:w-5xl"
+        variants={fadeInUp}
+      >
         Why Guests Love Staying Here
-      </p>
+      </motion.p>
 
       <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4">
         {whyDb.map((list) => {
           const Icon = list.icon
 
           return (
-            <div
+            <motion.div
               key={list.id}
               className="flex flex-col items-start justify-center gap-4 rounded-lg p-6 shadow-lg duration-800 ease-in-out hover:border hover:border-primary hover:shadow-2xl dark:bg-black"
+              variants={fadeInUp}
             >
               <div className="flex w-full justify-center">
                 <Icon className="h-10 w-10 rounded-full bg-primary/10 p-2 text-primary" />
@@ -59,11 +71,11 @@ function WhySection() {
                 <p className="font-semibold">{list.title}</p>
                 <p className="text-xs text-gray-600">{list.description}</p>
               </div>
-            </div>
+            </motion.div>
           )
         })}
       </div>
-    </div>
+    </motion.div>
   )
 }
 

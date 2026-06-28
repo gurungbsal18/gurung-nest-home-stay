@@ -1,17 +1,30 @@
-import React from "react"
+"use client"
+import { fadeInUp, staggerContainer } from "@/lib/animation"
+import { motion } from "framer-motion"
 import { SlLocationPin } from "react-icons/sl"
 
 function AboutSection() {
   return (
     <div className="container mx-auto">
-      <div className="mb-14 flex flex-col items-center gap-2">
-        <p className="text-xs font-medium tracking-[0.2em]">
+      <motion.div
+        className="mb-14 flex flex-col items-center gap-2"
+        variants={staggerContainer}
+        initial="hidden"
+        whileInView="visible"
+      >
+        <motion.p
+          className="text-xs font-medium tracking-[0.2em]"
+          variants={fadeInUp}
+        >
           ABOUT THE HOMESTAY
-        </p>
-        <h4 className="text-center text-3xl font-bold sm:text-4xl lg:text-5xl">
+        </motion.p>
+        <motion.h4
+          className="text-center text-3xl font-bold sm:text-4xl lg:text-5xl"
+          variants={fadeInUp}
+        >
           Wake Up <span className="text-primary">Above Kathmandu</span>
-        </h4>
-      </div>
+        </motion.h4>
+      </motion.div>
 
       <div className="grid items-center gap-10 lg:grid-cols-5 lg:gap-14">
         <div className="space-y-5 lg:col-span-3">

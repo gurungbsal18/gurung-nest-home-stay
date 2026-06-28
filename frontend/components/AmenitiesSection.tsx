@@ -1,3 +1,5 @@
+"use client"
+import { motion } from "framer-motion"
 import { FaWifi } from "react-icons/fa6"
 import { LuUtensils } from "react-icons/lu"
 import { LuShowerHead } from "react-icons/lu"
@@ -10,6 +12,7 @@ import { TbSofa } from "react-icons/tb"
 import { PiSecurityCamera } from "react-icons/pi"
 import { MdOutlineWaterDrop } from "react-icons/md"
 import { MdOutlinePower } from "react-icons/md"
+import { fadeInUp, staggerContainer } from "@/lib/animation"
 
 const amenitiesDb = [
   {
@@ -80,33 +83,43 @@ function AmenitiesSection() {
       className="flex flex-col gap-16 py-32 md:gap-32 dark:bg-secondary/20!"
       style={{ background: "#FBFAF8" }}
     >
-      <div className="container mx-auto">
+      <motion.div
+        className="container mx-auto"
+        variants={staggerContainer}
+        initial="hidden"
+        whileInView={"visible"}
+        viewport={{ once: true, margin: "-50px" }}
+      >
         <div className="mb-14 flex flex-col items-center gap-2">
-          <h4 className="text-3xl font-bold sm:text-4xl lg:text-5xl">
+          <motion.h4
+            className="text-3xl font-bold sm:text-4xl lg:text-5xl"
+            variants={fadeInUp}
+          >
             <span className="text-primary">Amenities</span> & Services
-          </h4>
-          <p className="text-center font-medium">
+          </motion.h4>
+          <motion.p className="text-center font-medium" variants={fadeInUp}>
             Everything you need for a comfortable and relaxing stay.
-          </p>
+          </motion.p>
         </div>
 
         <div className="grid grid-cols-2 gap-8 md:grid-cols-4">
           {amenitiesDb.map((list) => {
             const Icon = list.icon
             return (
-              <div
+              <motion.div
                 key={list.id}
                 className="border-border-20 flex items-center gap-4 rounded-2xl border bg-white p-4 transition-all duration-200 hover:border-primary/40 hover:bg-accent/5 dark:bg-black"
+                variants={fadeInUp}
               >
                 <div className="rounded-full bg-primary/10 p-2 dark:bg-primary/30">
                   <Icon className="text-primary" />
                 </div>
                 <p>{list.title}</p>
-              </div>
+              </motion.div>
             )
           })}
         </div>
-      </div>
+      </motion.div>
     </div>
   )
 }

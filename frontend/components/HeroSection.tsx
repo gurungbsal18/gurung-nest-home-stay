@@ -4,6 +4,7 @@ import { LuCalendarDays } from "react-icons/lu"
 import { GrLocation } from "react-icons/gr"
 import { motion, stagger, type Variants } from "framer-motion"
 import { fadeInUp, staggerContainer } from "@/lib/animation"
+import { ChevronDown } from "lucide-react"
 
 // const locationBadgeVariants: Variants = {
 //   hidden: { opacity: 0, y: -10 },
@@ -66,9 +67,12 @@ function HeroSection() {
           </motion.p>
         </motion.div>
 
-        <div className="flex flex-col gap-2 md:flex-row md:gap-4">
+        <motion.div
+          className="flex flex-col gap-2 md:flex-row md:gap-4"
+          variants={fadeInUp}
+        >
           <Link
-            href=""
+            href="#"
             className="flex h-8 items-center justify-center gap-2 rounded-xl bg-primary px-8 py-6 duration-500 ease-in-out hover:bg-primary/80 md:h-16"
           >
             <LuCalendarDays size={"24"} />
@@ -80,7 +84,14 @@ function HeroSection() {
           >
             Explore Rooms
           </Link>
-        </div>
+        </motion.div>
+        <motion.div
+          className="absolute bottom-8 left-1/2 z-[2] -translate-x-1/2"
+          animate={{ y: [0, 8, 0] }}
+          transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+        >
+          <ChevronDown className="size-6 text-white/60" />
+        </motion.div>
       </div>
     </div>
   )
