@@ -1,6 +1,18 @@
+"use client"
 import Link from "next/link"
-import { LuCalendarDays } from "react-icons/lu";
-import { GrLocation } from "react-icons/gr";
+import { LuCalendarDays } from "react-icons/lu"
+import { GrLocation } from "react-icons/gr"
+import { motion, stagger, type Variants } from "framer-motion"
+import { fadeInUp, staggerContainer } from "@/lib/animation"
+
+// const locationBadgeVariants: Variants = {
+//   hidden: { opacity: 0, y: -10 },
+//   visible: {
+//     opacity: 1,
+//     y: 0,
+//     transition: { duration: 0.4, ease: "easeOut" as const },
+//   },
+// }
 
 function HeroSection() {
   return (
@@ -19,23 +31,40 @@ function HeroSection() {
 
       {/* Content */}
       <div className="relative z-10 container mx-auto flex h-full w-full flex-col items-center justify-center gap-8 text-white lg:w-7xl">
-        <div className="flex flex-col items-center gap-2 text-center">
-          <p className="flex items-center gap-1 rounded-lg bg-yellow-500/60 px-4 py-2 text-xs font-semibold">
+        <motion.div
+          className="flex flex-col items-center gap-2 text-center"
+          variants={staggerContainer}
+          initial="hidden"
+          animate="visible"
+        >
+          <motion.p
+            className="flex items-center gap-1 rounded-lg bg-yellow-500/60 px-4 py-2 text-xs font-semibold"
+            variants={fadeInUp}
+          >
             <GrLocation /> RAMKOT, KATHMANDU
-          </p>
-          <h2 className="text-3xl font-bold md:text-4xl lg:text-6xl">
+          </motion.p>
+          <motion.h2
+            className="text-3xl font-bold md:text-4xl lg:text-6xl"
+            variants={fadeInUp}
+          >
             Escape the City
-          </h2>
-          <h2 className="text-2xl font-bold md:text-4xl lg:text-6xl">
+          </motion.h2>
+          <motion.h2
+            className="text-2xl font-bold md:text-4xl lg:text-6xl"
+            variants={fadeInUp}
+          >
             <span className="text-primary">Experience Kathmandu</span> from
             Above
-          </h2>
-          <p className="mt-4 w-full text-base md:text-xl lg:w-5xl">
+          </motion.h2>
+          <motion.p
+            className="mt-4 w-full text-base md:text-xl lg:w-5xl"
+            variants={fadeInUp}
+          >
             A peaceful hilltop homestay in Ramkot featuring breathtaking
             panoramic views of Kathmandu Valley, modern comfort, and
             unforgettable sunsets.
-          </p>
-        </div>
+          </motion.p>
+        </motion.div>
 
         <div className="flex flex-col gap-2 md:flex-row md:gap-4">
           <Link
