@@ -8,7 +8,7 @@ function AboutSection() {
         <p className="text-xs font-medium tracking-[0.2em]">
           ABOUT THE HOMESTAY
         </p>
-        <h4 className="text-3xl font-bold sm:text-4xl lg:text-5xl text-center">
+        <h4 className="text-center text-3xl font-bold sm:text-4xl lg:text-5xl">
           Wake Up <span className="text-primary">Above Kathmandu</span>
         </h4>
       </div>
@@ -43,8 +43,8 @@ function AboutSection() {
               className="h-full w-full object-cover"
             />
           </div>
-          <div className="absolute -bottom-2.5 -left-5 flex items-center gap-2 rounded-lg border border-gray-200 bg-white p-4 shadow-lg">
-            <div className="flex h-10 w-10 items-center rounded-full bg-primary/10 p-3">
+          <div className="absolute -bottom-2.5 -left-5 flex items-center gap-2 rounded-lg border border-gray-200 bg-white p-4 shadow-lg dark:border-primary dark:bg-black">
+            <div className="flex h-10 w-10 items-center rounded-full bg-primary/10 p-3 dark:bg-primary/50">
               <SlLocationPin size={"24"} />
             </div>
             <div>

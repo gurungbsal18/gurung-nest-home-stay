@@ -114,11 +114,11 @@ function Rooms() {
         </p>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-16">
+      <div className="grid grid-cols-1 gap-16 md:grid-cols-2 lg:grid-cols-3">
         {roomdb.map((room) => (
           <div
             key={room.id}
-            className="rounded-xl border border-gray-200 duration-700 ease-in-out hover:shadow-2xl"
+            className="rounded-xl border border-gray-200 duration-700 ease-in-out hover:shadow-2xl dark:border-border/80 dark:bg-secondary/30"
           >
             <div className="h-80 overflow-hidden">
               <img
@@ -128,7 +128,9 @@ function Rooms() {
               />
             </div>
             <div className="p-4">
-              <p className="text-xl font-semibold font-heading mb-4">{room.title}</p>
+              <p className="mb-4 font-heading text-xl font-semibold">
+                {room.title}
+              </p>
               <p className="mb-4 text-gray-500">{room.description}</p>
 
               <div className="grid grid-cols-2 gap-4 text-gray-500">

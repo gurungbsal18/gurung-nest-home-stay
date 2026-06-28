@@ -38,16 +38,18 @@ const whyDb = [
 function WhySection() {
   return (
     <div className="container mx-auto flex flex-col items-center gap-8">
-      <p className="font-semibold uppercase">Why Guests Love Staying Here</p>
+      <p className="w-full border-t border-border/80 pt-8 text-center font-semibold uppercase md:w-xl lg:w-5xl">
+        Why Guests Love Staying Here
+      </p>
 
-      <div className="grid grid-cols-1 gap-8 md:grid-cols-4">
+      <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4">
         {whyDb.map((list) => {
           const Icon = list.icon
 
           return (
             <div
               key={list.id}
-              className="flex flex-col items-start justify-center gap-4 rounded-lg p-6 shadow-lg duration-800 ease-in-out hover:border hover:border-primary hover:shadow-2xl"
+              className="flex flex-col items-start justify-center gap-4 rounded-lg p-6 shadow-lg duration-800 ease-in-out hover:border hover:border-primary hover:shadow-2xl dark:bg-black"
             >
               <div className="flex w-full justify-center">
                 <Icon className="h-10 w-10 rounded-full bg-primary/10 p-2 text-primary" />

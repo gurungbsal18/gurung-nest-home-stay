@@ -91,12 +91,15 @@ function EverythingYouNeedSection() {
         {db.map((list) => {
             const Icon = list.icon
             return (
-               <div key={list.id} className='flex flex-col gap-2 items-center justify-start p-4 border border-gray-100 rounded-xl hover:shadow-sm hover:border-primary/30 duration-700 ease-in-out'>
-                 <span className='bg-primary/10 text-primary rounded-full p-4 w-fit'>
-                    <Icon size={"24"}/>
-                 </span>
-                <p className='font-medium text-sm text-center'>{list.title}</p>
-               </div>
+              <div
+                key={list.id}
+                className="flex flex-col items-center justify-start gap-2 rounded-xl border border-border/80 p-4 duration-700 ease-in-out hover:border-primary/80 hover:shadow-sm dark:bg-secondary/20"
+              >
+                <span className="w-fit rounded-full bg-primary/10 p-4 text-primary">
+                  <Icon size={"24"} />
+                </span>
+                <p className="text-center text-sm font-medium">{list.title}</p>
+              </div>
             )
         })}
       </div>

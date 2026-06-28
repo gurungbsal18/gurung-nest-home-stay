@@ -9,18 +9,19 @@ import WhySection from "@/components/WhySection"
 export default function Page() {
   return (
     <>
-     <HeroSection />
+      <HeroSection />
       <div className="flex flex-col gap-32 pb-32">
         <div
-          className="flex flex-col gap-32 py-32"
+          className="flex flex-col gap-16 py-32 md:gap-32 dark:bg-secondary/20!"
           style={{ background: "#FBFAF8" }}
         >
           <AboutSection />
           <WhySection />
         </div>
-        <EverythingYouNeedSection/>
-        <Rooms/>
-        <PanoramicExperience/>
-      </div></>
+        <EverythingYouNeedSection />
+        <Rooms />
+        <PanoramicExperience />
+      </div>
+    </>
   )
 }
