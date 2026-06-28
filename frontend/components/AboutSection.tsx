@@ -8,7 +8,7 @@ function AboutSection() {
         <p className="text-xs font-medium tracking-[0.2em]">
           ABOUT THE HOMESTAY
         </p>
-        <h4 className="text-3xl font-bold sm:text-4xl lg:text-5xl">
+        <h4 className="text-3xl font-bold sm:text-4xl lg:text-5xl text-center">
           Wake Up <span className="text-primary">Above Kathmandu</span>
         </h4>
       </div>

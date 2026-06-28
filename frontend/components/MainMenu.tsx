@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from "react"
 import { Button } from "./ui/button"
 import { cn } from "@/lib/utils";
+import { IoMenu } from "react-icons/io5";
 
 function MainMenu() {
       const [scrolled, setScrolled] = useState(false)
@@ -27,11 +28,10 @@ function MainMenu() {
           : "shadow-lg backdrop-blur-md text-white"
       )}
     >
-      <div className="container mx-auto flex justify-between items-center">
-        <p>Gurung Nest Home Stay</p>
+      <div className="container mx-auto flex justify-between items-center font-bold">
+        <p>Gurung Nest Homestay</p>
 
-        {/* <div className="flex items-center gap-4"> */}
-          <ul className="flex justify-center gap-4">
+          <ul className="lg:flex justify-center gap-4 hidden">
             <li>Home</li>
             <li>About</li>
             <li>Rooms</li>
@@ -41,10 +41,13 @@ function MainMenu() {
             <li>Contact</li>
           </ul>
 
-          <Button size={"lg"} variant={"secondary"}>
+          <Button size={"lg"} variant={"secondary"} className="hidden lg:block">
             Book Now
           </Button>
-        {/* </div> */}
+
+        
+      <IoMenu className="block lg:hidden"/>
+        
       </div>
     </div>
   )

@@ -1,4 +1,5 @@
 import AboutSection from "@/components/AboutSection"
+import EverythingYouNeedSection from "@/components/EverythingYouNeedSection"
 import HeroSection from "@/components/HeroSection"
 import PanoramicExperience from "@/components/PanoramicExperience"
 import Rooms from "@/components/Rooms"
@@ -17,6 +18,7 @@ export default function Page() {
           <AboutSection />
           <WhySection />
         </div>
+        <EverythingYouNeedSection/>
         <Rooms/>
         <PanoramicExperience/>
       </div></>

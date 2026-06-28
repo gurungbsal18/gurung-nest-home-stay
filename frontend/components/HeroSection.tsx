@@ -1,5 +1,5 @@
 import Link from "next/link"
-import React from "react"
+import { LuCalendarDays } from "react-icons/lu";
 
 function HeroSection() {
   return (
@@ -36,8 +36,9 @@ function HeroSection() {
         <div className="flex gap-4">
           <Link
             href=""
-            className="flex h-16 items-center justify-center rounded-xl bg-primary px-8 py-6 duration-500 ease-in-out hover:bg-primary/80"
+            className="flex gap-2 h-16 items-center justify-center rounded-xl bg-primary px-8 py-6 duration-500 ease-in-out hover:bg-primary/80"
           >
+<LuCalendarDays size={"24"}/>
             Book Your Stay
           </Link>
           <Link
