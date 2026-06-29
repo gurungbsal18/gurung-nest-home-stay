@@ -8,24 +8,37 @@ import { fadeInUp, staggerContainer } from "@/lib/animation"
 
 function PanoramicExperience() {
   return (
-    <motion.div
-      className="container mx-auto"
-      variants={staggerContainer}
-      initial="hidden"
-      whileInView={"visible"}
-      viewport={{ once: true, margin: "-50px" }}
-    >
-      <div className="grid grid-cols-1 items-center gap-16 lg:grid-cols-2">
-        <motion.div className="col-span-1" variants={fadeInUp}>
-          <div className="h-100 overflow-hidden rounded-xl">
-            <img
+    <div className="container mx-auto">
+      <div
+        className="grid grid-cols-1 items-center gap-16 lg:grid-cols-2"
+
+        // viewport={{ once: true, margin: "-50px" }}
+      >
+        <motion.div
+          className="col-span-1"
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView={"visible"}
+        >
+          <motion.div
+            className="h-100 overflow-hidden rounded-xl"
+            variants={fadeInUp}
+          >
+            <motion.img
               src="/images/kathmandu-view.webp"
               alt="kathmandu"
               className="h-full w-full object-cover"
+              variants={fadeInUp}
             />
-          </div>
+          </motion.div>
         </motion.div>
-        <div className="col-span-1 flex flex-col gap-8">
+        <motion.div
+          className="col-span-1 flex flex-col gap-8"
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView={"visible"}
+          // viewport={{ once: true, margin: "-50px" }}
+        >
           <motion.h4
             className="text-center text-3xl font-bold sm:text-4xl md:text-left lg:text-5xl"
             variants={fadeInUp}
@@ -59,9 +72,9 @@ function PanoramicExperience() {
               Book Your Experience
             </Button>
           </motion.div>
-        </div>
+        </motion.div>
       </div>
-    </motion.div>
+    </div>
   )
 }
 

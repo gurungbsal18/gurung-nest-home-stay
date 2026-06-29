@@ -83,14 +83,13 @@ function AmenitiesSection() {
       className="flex flex-col gap-16 py-32 md:gap-32 dark:bg-secondary/20!"
       style={{ background: "#FBFAF8" }}
     >
-      <motion.div
-        className="container mx-auto"
-        variants={staggerContainer}
-        initial="hidden"
-        whileInView={"visible"}
-        viewport={{ once: true, margin: "-50px" }}
-      >
-        <div className="mb-14 flex flex-col items-center gap-2">
+      <div className="container mx-auto">
+        <motion.div
+          className="mb-14 flex flex-col items-center gap-2"
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView={"visible"}
+        >
           <motion.h4
             className="text-3xl font-bold sm:text-4xl lg:text-5xl"
             variants={fadeInUp}
@@ -100,9 +99,15 @@ function AmenitiesSection() {
           <motion.p className="text-center font-medium" variants={fadeInUp}>
             Everything you need for a comfortable and relaxing stay.
           </motion.p>
-        </div>
+        </motion.div>
 
-        <div className="grid grid-cols-2 gap-4 md:grid-cols-3 md:gap-8 lg:grid-cols-4">
+        <motion.div
+          className="grid grid-cols-2 gap-4 md:grid-cols-3 md:gap-8 lg:grid-cols-4"
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView={"visible"}
+          viewport={{ once: true, margin: "-50px" }}
+        >
           {amenitiesDb.map((list) => {
             const Icon = list.icon
             return (
@@ -118,8 +123,8 @@ function AmenitiesSection() {
               </motion.div>
             )
           })}
-        </div>
-      </motion.div>
+        </motion.div>
+      </div>
     </div>
   )
 }

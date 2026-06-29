@@ -79,26 +79,31 @@ const db = [
 
 function EverythingYouNeedSection() {
   return (
-    <motion.div
-      className="container mx-auto"
-      variants={staggerContainer}
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true, margin: "-50px" }}
-    >
-      <div className="mb-14 flex flex-col items-center gap-2">
+    <div className="container mx-auto">
+      <motion.div
+        className="mb-14 flex flex-col items-center gap-2"
+        variants={staggerContainer}
+        initial="hidden"
+        whileInView="visible"
+      >
         <motion.h4
           className="text-3xl font-bold sm:text-4xl lg:text-5xl"
           variants={fadeInUp}
         >
           <span className="text-primary">Everything</span> You Need
         </motion.h4>
-        <motion.p className="font-medium" variants={fadeInUp}>
+        <motion.p className="text-center font-medium" variants={fadeInUp}>
           Thoughtfully designed spaces and amenities for a comfortable stay.
         </motion.p>
-      </div>
+      </motion.div>
 
-      <div className="grid grid-cols-2 gap-8 md:grid-cols-3 lg:grid-cols-6 lg:gap-16">
+      <motion.div
+        className="grid grid-cols-2 gap-8 md:grid-cols-3 lg:grid-cols-6 lg:gap-16"
+        variants={staggerContainer}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: "-50px" }}
+      >
         {db.map((list) => {
           const Icon = list.icon
           return (
@@ -114,8 +119,8 @@ function EverythingYouNeedSection() {
             </motion.div>
           )
         })}
-      </div>
-    </motion.div>
+      </motion.div>
+    </div>
   )
 }
 

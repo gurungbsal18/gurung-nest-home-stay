@@ -39,43 +39,52 @@ const whyDb = [
 
 function WhySection() {
   return (
-    <motion.div
-      className="container mx-auto flex flex-col items-center gap-8"
-      variants={staggerContainer}
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true, margin: "-50px" }}
-    >
-      <motion.p
-        className="w-full border-t border-border/80 pt-8 text-center font-semibold uppercase md:w-xl lg:w-5xl"
-        variants={fadeInUp}
-      >
-        Why Guests Love Staying Here
-      </motion.p>
+    <div className="container mx-auto">
+      <motion.div className="flex flex-col items-center gap-8">
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          // viewport={{ once: true, margin: "-50px" }}
+        >
+          <motion.p
+            className="w-full border-t border-border/80 pt-8 text-center font-semibold uppercase md:w-xl lg:w-5xl"
+            variants={fadeInUp}
+          >
+            Why Guests Love Staying Here
+          </motion.p>
+        </motion.div>
 
-      <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4">
-        {whyDb.map((list) => {
-          const Icon = list.icon
+        <motion.div
+          className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4"
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-50px" }}
+        >
+          {whyDb.map((list) => {
+            const Icon = list.icon
 
-          return (
-            <motion.div
-              key={list.id}
-              className="flex flex-col items-start justify-center gap-4 rounded-lg p-6 shadow-lg duration-800 ease-in-out hover:border hover:border-primary hover:shadow-2xl dark:bg-black"
-              variants={fadeInUp}
-            >
-              <div className="flex w-full justify-center">
-                <Icon className="h-10 w-10 rounded-full bg-primary/10 p-2 text-primary" />
-              </div>
+            return (
+              <motion.div
+                key={list.id}
+                className="flex flex-col items-start justify-center gap-4 rounded-lg p-6 shadow-lg duration-800 ease-in-out hover:border hover:border-primary hover:shadow-2xl dark:bg-black"
+                variants={fadeInUp}
+              >
+                <div className="flex w-full justify-center">
+                  <Icon className="h-10 w-10 rounded-full bg-primary/10 p-2 text-primary" />
+                </div>
 
-              <div className="flex flex-col items-center gap-2 text-center">
-                <p className="font-semibold">{list.title}</p>
-                <p className="text-xs text-gray-600">{list.description}</p>
-              </div>
-            </motion.div>
-          )
-        })}
-      </div>
-    </motion.div>
+                <div className="flex flex-col items-center gap-2 text-center">
+                  <p className="font-semibold">{list.title}</p>
+                  <p className="text-xs text-gray-600">{list.description}</p>
+                </div>
+              </motion.div>
+            )
+          })}
+        </motion.div>
+      </motion.div>
+    </div>
   )
 }
 

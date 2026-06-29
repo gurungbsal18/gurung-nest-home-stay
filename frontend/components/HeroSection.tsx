@@ -55,7 +55,7 @@ function HeroSection() {
             className="text-2xl font-bold md:text-4xl lg:text-6xl"
             variants={fadeInUp}
           >
-            <span className="text-primary">Experience Kathmandu</span> from
+            <span className="text-yellow-500">Experience Kathmandu</span> from
             Above
           </motion.h2>
           <motion.p

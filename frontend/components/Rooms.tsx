@@ -105,14 +105,13 @@ const roomdb = [
 
 function Rooms() {
   return (
-    <motion.div
-      className="container mx-auto"
-      variants={staggerContainer}
-      initial="hidden"
-      whileInView={"visible"}
-      viewport={{ once: true, margin: "-50px" }}
-    >
-      <div className="mb-14 flex flex-col items-center gap-2">
+    <div className="container mx-auto">
+      <motion.div
+        className="mb-14 flex flex-col items-center gap-2"
+        variants={staggerContainer}
+        initial="hidden"
+        whileInView={"visible"}
+      >
         <motion.h4
           className="text-3xl font-bold sm:text-4xl lg:text-5xl"
           variants={fadeInUp}
@@ -123,9 +122,15 @@ function Rooms() {
           Every space is designed for comfort, relaxation, and enjoying the
           views.
         </motion.p>
-      </div>
+      </motion.div>
 
-      <div className="grid grid-cols-1 gap-16 md:grid-cols-2 lg:grid-cols-3">
+      <motion.div
+        className="grid grid-cols-1 gap-16 md:grid-cols-2 lg:grid-cols-3"
+        variants={staggerContainer}
+        initial="hidden"
+        whileInView={"visible"}
+        // viewport={{ once: true, margin: "-50px" }}
+      >
         {roomdb.map((room) => (
           <motion.div
             key={room.id}
@@ -160,8 +165,8 @@ function Rooms() {
             </div>
           </motion.div>
         ))}
-      </div>
-    </motion.div>
+      </motion.div>
+    </div>
   )
 }
 
