@@ -1,6 +1,39 @@
 "use client"
 import { fadeInUp } from "@/lib/animation"
 import { motion } from "framer-motion"
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "./ui/carousel"
+import { Card, CardContent } from "./ui/card"
+import Autoplay from "embla-carousel-autoplay"
+
+const reviewDb = [
+  {
+    id: 1,
+    name: "The Shrestha Family",
+    location: "Lalitpur, Nepal",
+    review:
+      "A perfect weekend escape from the city. Our kids love it and we finally got to rest properly",
+  },
+  {
+    id: 2,
+    name: "Shopie L",
+    location: "Berlin, Germany",
+    review:
+      "Worked from balcony every morning. The quiet, the views, the coffee - best workstation I've ever had.",
+  },
+  {
+    id: 3,
+    name: "Anjali and Rohan",
+    location: "Mumbai, India",
+    review:
+      "We woke up to clouds rolling through the valley. Absolutely unreal. The host made us feel like family",
+  },
+]
 
 function GuestReviewSection() {
   return (
@@ -15,6 +48,45 @@ function GuestReviewSection() {
         <motion.p className="text-center font-medium" variants={fadeInUp}>
           Hear from our guests about their experience.
         </motion.p>
+      </div>
+
+      {/* review carousel */}
+
+      {/* <Carousel className="w-full max-w-[12rem] sm:max-w-xs"> */}
+      <div className="flex w-full justify-center">
+        <Carousel
+          className="flex w-full flex-col justify-center md:max-w-150"
+          opts={{
+            loop: true,
+          }}
+          plugins={[
+            Autoplay({
+              delay: 2000,
+            }),
+          ]}
+        >
+          <CarouselContent>
+            {reviewDb.map((list) => (
+              <CarouselItem key={list.id}>
+                <div className="p-1">
+                  <Card>
+                    <CardContent className="flex flex-col items-start justify-start gap-8 p-6">
+                      <p className="text-lg font-medium text-gray-500 italic">
+                        "{list.review}"
+                      </p>
+                      <div className="flex flex-col">
+                        <p className="font-bold">{list.name}</p>
+                        <p className="text-sm text-gray-500">{list.location}</p>
+                      </div>
+                    </CardContent>
+                  </Card>
+                </div>
+              </CarouselItem>
+            ))}
+          </CarouselContent>
+          <CarouselPrevious />
+          <CarouselNext />
+        </Carousel>
       </div>
     </motion.div>
   )
