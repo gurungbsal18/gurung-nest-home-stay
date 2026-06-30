@@ -1,12 +1,12 @@
 import AboutSection from "@/components/AboutSection"
 import AmenitiesSection from "@/components/AmenitiesSection"
+import BookingSection from "@/components/BookingSection"
 import EverythingYouNeedSection from "@/components/EverythingYouNeedSection"
 import GallerySection from "@/components/GallerySection"
 import GuestReviewSection from "@/components/GuestReviewSection"
 import HeroSection from "@/components/HeroSection"
 import PanoramicExperience from "@/components/PanoramicExperience"
 import Rooms from "@/components/Rooms"
-import { Button } from "@/components/ui/button"
 import WhySection from "@/components/WhySection"
 
 export default function Page() {
@@ -27,6 +27,7 @@ export default function Page() {
         <GallerySection />
         <AmenitiesSection />
         <GuestReviewSection />
+        <BookingSection />
       </div>
     </>
   )

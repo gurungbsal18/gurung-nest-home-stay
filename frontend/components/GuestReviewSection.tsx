@@ -18,6 +18,7 @@ const reviewDb = [
     location: "Lalitpur, Nepal",
     review:
       "A perfect weekend escape from the city. Our kids love it and we finally got to rest properly",
+    rating: 5,
   },
   {
     id: 2,
@@ -25,6 +26,7 @@ const reviewDb = [
     location: "Berlin, Germany",
     review:
       "Worked from balcony every morning. The quiet, the views, the coffee - best workstation I've ever had.",
+    rating: 5,
   },
   {
     id: 3,
@@ -32,6 +34,7 @@ const reviewDb = [
     location: "Mumbai, India",
     review:
       "We woke up to clouds rolling through the valley. Absolutely unreal. The host made us feel like family",
+    rating: 4,
   },
 ]
 
