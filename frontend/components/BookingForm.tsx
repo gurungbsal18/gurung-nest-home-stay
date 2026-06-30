@@ -18,7 +18,7 @@ export function BookingForm() {
   return (
     <div className="flex w-full justify-center">
       <form className="w-2xl rounded-md border border-gray-200 p-8 shadow-xl">
-        <div className="grid grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
           <Field className="mx-auto w-full">
             <FieldLabel htmlFor="date">Check-in</FieldLabel>
             <Popover open={open} onOpenChange={setOpen}>
