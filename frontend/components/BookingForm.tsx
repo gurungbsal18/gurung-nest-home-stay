@@ -16,7 +16,12 @@ import { Textarea } from "./ui/textarea"
 import { format } from "date-fns/format"
 
 export function BookingForm() {
-  const [date, setDate] = React.useState<Date | undefined>(undefined)
+  const [checkInDate, setCheckInDate] = React.useState<Date | undefined>(
+    undefined
+  )
+  const [checkOutDate, setCheckOutDate] = React.useState<Date | undefined>(
+    undefined
+  )
 
   return (
     <div className="flex w-full justify-center">
@@ -32,15 +37,19 @@ export function BookingForm() {
                   id="date-picker-simple"
                   className="justify-start font-normal"
                 >
-                  {date ? format(date, "PPP") : <span>Pick a date</span>}
+                  {checkInDate ? (
+                    format(checkInDate, "PPP")
+                  ) : (
+                    <span>Pick a date</span>
+                  )}
                 </Button>
               </PopoverTrigger>
               <PopoverContent className="w-auto p-0" align="start">
                 <Calendar
                   mode="single"
-                  selected={date}
-                  onSelect={setDate}
-                  defaultMonth={date}
+                  selected={checkInDate}
+                  onSelect={setCheckInDate}
+                  defaultMonth={checkInDate}
                 />
               </PopoverContent>
             </Popover>
@@ -55,15 +64,19 @@ export function BookingForm() {
                   id="date-picker-simple"
                   className="justify-start font-normal"
                 >
-                  {date ? format(date, "PPP") : <span>Pick a date</span>}
+                  {checkOutDate ? (
+                    format(checkOutDate, "PPP")
+                  ) : (
+                    <span>Pick a date</span>
+                  )}
                 </Button>
               </PopoverTrigger>
               <PopoverContent className="w-auto p-0" align="start">
                 <Calendar
                   mode="single"
-                  selected={date}
-                  onSelect={setDate}
-                  defaultMonth={date}
+                  selected={checkOutDate}
+                  onSelect={setCheckOutDate}
+                  defaultMonth={checkOutDate}
                 />
               </PopoverContent>
             </Popover>
