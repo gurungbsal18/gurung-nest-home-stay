@@ -13,69 +13,57 @@ import {
 import { Label } from "./ui/label"
 import { Input } from "./ui/input"
 import { Textarea } from "./ui/textarea"
+import { format } from "date-fns/format"
 
 export function BookingForm() {
-  const [open, setOpen] = React.useState(false)
   const [date, setDate] = React.useState<Date | undefined>(undefined)
 
   return (
     <div className="flex w-full justify-center">
       <form className="flex w-2xl flex-col gap-4 rounded-md border border-gray-200 p-8 shadow-xl">
         <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
-          <Field className="mx-auto w-full">
-            <FieldLabel htmlFor="date">Check-in</FieldLabel>
-            <Popover open={open} onOpenChange={setOpen}>
+          <Field className="w-full">
+            <FieldLabel htmlFor="date-picker-simple">Check-in Date</FieldLabel>
+            <Popover>
               <PopoverTrigger asChild>
                 <Button
+                  type="button"
                   variant="outline"
-                  id="date"
+                  id="date-picker-simple"
                   className="justify-start font-normal"
                 >
-                  {date ? date.toLocaleDateString() : "Select date"}
+                  {date ? format(date, "PPP") : <span>Pick a date</span>}
                 </Button>
               </PopoverTrigger>
-              <PopoverContent
-                className="w-auto overflow-hidden p-0"
-                align="start"
-              >
+              <PopoverContent className="w-auto p-0" align="start">
                 <Calendar
                   mode="single"
                   selected={date}
+                  onSelect={setDate}
                   defaultMonth={date}
-                  captionLayout="dropdown"
-                  onSelect={(date) => {
-                    setDate(date)
-                    setOpen(false)
-                  }}
                 />
               </PopoverContent>
             </Popover>
           </Field>
-          <Field className="mx-auto w-full">
-            <FieldLabel htmlFor="date">Check-out</FieldLabel>
-            <Popover open={open} onOpenChange={setOpen}>
+          <Field className="w-full">
+            <FieldLabel htmlFor="date-picker-simple">Check-out Date</FieldLabel>
+            <Popover>
               <PopoverTrigger asChild>
                 <Button
+                  type="button"
                   variant="outline"
-                  id="date"
+                  id="date-picker-simple"
                   className="justify-start font-normal"
                 >
-                  {date ? date.toLocaleDateString() : "Select date"}
+                  {date ? format(date, "PPP") : <span>Pick a date</span>}
                 </Button>
               </PopoverTrigger>
-              <PopoverContent
-                className="w-auto overflow-hidden p-0"
-                align="start"
-              >
+              <PopoverContent className="w-auto p-0" align="start">
                 <Calendar
                   mode="single"
                   selected={date}
+                  onSelect={setDate}
                   defaultMonth={date}
-                  captionLayout="dropdown"
-                  onSelect={(date) => {
-                    setDate(date)
-                    setOpen(false)
-                  }}
                 />
               </PopoverContent>
             </Popover>
