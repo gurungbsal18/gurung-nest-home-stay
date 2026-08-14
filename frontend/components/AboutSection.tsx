@@ -1,6 +1,7 @@
 "use client"
 import { fadeInUp, staggerContainer } from "@/lib/animation"
 import { motion } from "framer-motion"
+import Image from "next/image"
 import { SlLocationPin } from "react-icons/sl"
 
 function AboutSection() {
@@ -42,18 +43,22 @@ function AboutSection() {
             </p>
           </div>
           <p className="">
-            Whether you're visiting Kathmandu for vacation, work, or a weekend
-            retreat, our home provides comfort, privacy, and unforgettable
-            scenery. From morning mist over the valley to evening lights of the
-            city below, every moment here is a memory in the making.
+            Whether you&lsquo;re visiting Kathmandu for vacation, work, or a
+            weekend retreat, our home provides comfort, privacy, and
+            unforgettable scenery. From morning mist over the valley to evening
+            lights of the city below, every moment here is a memory in the
+            making.
           </p>
         </div>
         <div className="relative lg:col-span-2">
           <div className="relative h-75 overflow-hidden rounded-2xl shadow-lg sm:h-100">
-            <img
-              src="/images/kathmandu-view.webp"
+            <Image
+              // src="/images/kathmandu-view.webp"
+              src="/images/gurung-nest-images/building.jpg"
               alt="kathmandu"
-              className="h-full w-full object-cover"
+              className="h-full! w-full! object-cover"
+              height={800}
+              width={800}
             />
           </div>
           <div className="absolute -bottom-2.5 -left-5 flex items-center gap-2 rounded-lg border border-gray-200 bg-white p-4 shadow-lg dark:border-primary dark:bg-black">

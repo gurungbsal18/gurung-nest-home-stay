@@ -25,7 +25,8 @@ function PanoramicExperience() {
             variants={fadeInUp}
           >
             <motion.img
-              src="/images/kathmandu-view.webp"
+              // src="/images/kathmandu-view.webp"
+              src="/images/gurung-nest-images/view.jpg"
               alt="kathmandu"
               className="h-full w-full object-cover"
               variants={fadeInUp}

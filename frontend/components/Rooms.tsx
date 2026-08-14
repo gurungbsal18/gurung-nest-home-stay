@@ -19,7 +19,7 @@ const roomdb = [
     title: "Master Bedroom",
     description:
       "King-size bed with large windows offering scenic city views and comfortable mattress for a restful sleep.",
-    image: "/images/bed-room.jpg",
+    image: "/images/gurung-nest-images/bedroom.jpg",
     amenities: [
       {
         id: 1,
@@ -48,7 +48,7 @@ const roomdb = [
     title: "Living Room",
     description:
       "Comfortable sofa, smart TV, and cozy seating with abundant natural lighting for relaxation.",
-    image: "/images/living-room.jpg",
+    image: "/images/gurung-nest-images/living-room.jpg",
     amenities: [
       {
         id: 1,
@@ -77,7 +77,7 @@ const roomdb = [
     title: "Modular Kitchen",
     description:
       "Fully equipped modern kitchen with refrigerator, stove, microwave, and dining area.",
-    image: "/images/kitchen.jpg",
+    image: "/images/gurung-nest-images/kitchen.jpg",
     amenities: [
       {
         id: 1,
