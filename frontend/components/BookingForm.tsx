@@ -113,7 +113,7 @@ export function BookingForm() {
         className="flex w-2xl flex-col gap-4 rounded-md border border-gray-200 p-8 shadow-xl"
         onSubmit={handleSubmit}
       >
-        <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
+        <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
           <Field className="w-full">
             <FieldLabel htmlFor="date-picker-simple">Check-in Date</FieldLabel>
             <Popover>
@@ -171,9 +171,15 @@ export function BookingForm() {
           </Field>
         </div>
 
-        <div className="flex flex-col gap-2">
-          <Label>Guests</Label>
-          <Input type="number" min={1} name="guests" required />
+        <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
+          <div className="flex flex-col gap-2">
+            <Label>Guests</Label>
+            <Input type="number" min={1} name="guests" required />
+          </div>
+          <div className="flex flex-col gap-2">
+            <Label>Phone Number</Label>
+            <Input type="tel" name="phoneNumber" required />
+          </div>
         </div>
 
         <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
@@ -185,11 +191,6 @@ export function BookingForm() {
             <Label>Last Name</Label>
             <Input type="text" name="lastName" required />
           </div>
-        </div>
-
-        <div className="flex flex-col gap-2">
-          <Label>Phone Number</Label>
-          <Input type="tel" name="phoneNumber" required />
         </div>
 
         <div className="flex flex-col gap-2">
