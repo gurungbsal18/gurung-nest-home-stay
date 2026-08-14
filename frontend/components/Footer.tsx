@@ -1,3 +1,4 @@
+import Image from "next/image"
 import React from "react"
 
 function Footer() {
@@ -6,13 +7,14 @@ function Footer() {
       <div className="container mx-auto py-16">
         <div className="grid grid-cols-1 gap-16 lg:grid-cols-4 lg:gap-24">
           <div className="col-span-1 flex flex-col gap-2 lg:col-span-2">
-            <p className="font-heading text-2xl font-bold text-primary">
-              Gurung Nest Homestay
-            </p>
+            <Image
+              src="/images/logo.png"
+              alt="Gurung Nest Home Stay"
+              height={300}
+              width={300}
+            />
             <p className="text-sm text-gray-500">
-              A peaceful hilltop homestay in Ramkot, Kathmandu offering
-              breathtaking panoramic views of Kathmandu Valley, modern comfort,
-              and unforgettable sunsets.
+              Stay with Comfort, Feel Like Home
             </p>
           </div>
           <div>

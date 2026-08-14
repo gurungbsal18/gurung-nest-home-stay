@@ -1,7 +1,8 @@
 "use client"
 
 import { useEffect, useState } from "react"
-import { Menu, X, MapPin } from "lucide-react"
+import Image from "next/image"
+import { Menu, X } from "lucide-react"
 
 import { Button } from "./ui/button"
 import { cn } from "@/lib/utils"
@@ -33,6 +34,31 @@ function MainMenu() {
     }
   }, [])
 
+  // Lock background scroll while the mobile menu is open
+  useEffect(() => {
+    document.body.style.overflow = mobileOpen ? "hidden" : ""
+    return () => {
+      document.body.style.overflow = ""
+    }
+  }, [mobileOpen])
+
+  // Close on Escape, and auto-close if resized up to desktop nav breakpoint
+  useEffect(() => {
+    if (!mobileOpen) return
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setMobileOpen(false)
+    }
+    const handleResize = () => {
+      if (window.innerWidth >= 1280) setMobileOpen(false)
+    }
+    window.addEventListener("keydown", handleKeyDown)
+    window.addEventListener("resize", handleResize)
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown)
+      window.removeEventListener("resize", handleResize)
+    }
+  }, [mobileOpen])
+
   const scrollToSection = (id: string) => {
     const target = document.getElementById(id)
 
@@ -55,40 +81,46 @@ function MainMenu() {
       )}
     >
       <div className="container mx-auto">
-        <div className="flex items-center justify-between gap-4 py-4 lg:py-5">
+        {/* 3-column grid: logo (auto) | nav (1fr, centered) | actions (auto).
+            This is what actually centers the nav — a flex row can't center
+            a middle item independently of however wide the outer items are,
+            but a grid's middle 1fr column always centers regardless of what
+            the logo or the action buttons measure. */}
+        <div className="grid grid-cols-[auto_1fr_auto] items-center gap-4 py-3 lg:py-4">
           <button
             type="button"
             onClick={() => scrollToSection("home")}
-            className="group flex items-center gap-3 text-left"
+            className="flex items-center transition-transform duration-300 hover:scale-[1.02]"
             aria-label="Go to home section"
           >
-            <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-primary text-primary-foreground shadow-lg shadow-primary/20 transition-transform duration-300 group-hover:scale-105">
-              <MapPin className="size-5" />
-            </div>
-            <div className="leading-tight">
-              <p className="font-heading text-lg font-bold text-white lg:text-xl">
-                Gurung Nest
-              </p>
-              <p className="text-xs font-medium tracking-[0.24em] text-white/70 uppercase">
-                Homestay Ramkot
-              </p>
-            </div>
+            {/* Fixed-height, auto-width image keeps the logo's own aspect
+                ratio intact and gives the grid a stable, known column size —
+                the previous h-15/w-100 classes don't exist in Tailwind's
+                default scale, so the box had no reliable size at all. */}
+            <Image
+              src="/images/logo-white.png"
+              alt="Gurung Nest Homestay"
+              width={180}
+              height={60}
+              priority
+              className="h-9 w-auto object-contain sm:h-10 lg:h-11"
+            />
           </button>
 
-          <nav className="hidden items-center gap-1 rounded-full border border-white/10 bg-white/10 px-2 py-2 shadow-lg shadow-black/10 backdrop-blur-md xl:flex">
+          <nav className="hidden items-center gap-1 justify-self-center rounded-full border border-white/10 bg-white/10 px-2 py-2 shadow-lg shadow-black/10 backdrop-blur-md xl:flex">
             {navItems.map((item) => (
               <button
                 key={item.id}
                 type="button"
                 onClick={() => scrollToSection(item.id)}
-                className="rounded-full px-4 py-2 text-sm font-semibold text-white/80 transition-all duration-200 hover:bg-white/10 hover:text-white"
+                className="rounded-full px-4 py-2 text-sm font-semibold whitespace-nowrap text-white/80 transition-all duration-200 hover:bg-white/10 hover:text-white"
               >
                 {item.label}
               </button>
             ))}
           </nav>
 
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-3 justify-self-end">
             <Button
               type="button"
               size="lg"
@@ -106,6 +138,7 @@ function MainMenu() {
               onClick={() => setMobileOpen((value) => !value)}
               aria-label={mobileOpen ? "Close menu" : "Open menu"}
               aria-expanded={mobileOpen}
+              aria-controls="mobile-menu-panel"
             >
               {mobileOpen ? (
                 <X className="size-4" />
@@ -117,6 +150,7 @@ function MainMenu() {
         </div>
 
         <div
+          id="mobile-menu-panel"
           className={cn(
             "overflow-hidden transition-[max-height,opacity,transform] duration-300 xl:hidden",
             mobileOpen
@@ -126,12 +160,23 @@ function MainMenu() {
         >
           <div className="mb-4 rounded-3xl border border-white/10 bg-zinc-950/90 p-3 shadow-2xl shadow-black/20 backdrop-blur-2xl">
             <div className="grid grid-cols-2 gap-2 sm:grid-cols-4">
-              {navItems.map((item) => (
+              {navItems.map((item, index) => (
                 <button
                   key={item.id}
                   type="button"
                   onClick={() => scrollToSection(item.id)}
-                  className="rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-sm font-semibold text-white/85 transition-all duration-200 hover:border-primary/40 hover:bg-primary/15 hover:text-white"
+                  className={cn(
+                    "rounded-2xl border border-white/10 bg-white/5 px-4 py-3 text-sm font-semibold text-white/85 transition-all duration-200 hover:border-primary/40 hover:bg-primary/15 hover:text-white",
+                    "ease-out",
+                    mobileOpen
+                      ? "translate-y-0 opacity-100"
+                      : "-translate-y-1 opacity-0"
+                  )}
+                  style={{
+                    transitionDelay: mobileOpen ? `${index * 30}ms` : "0ms",
+                    transitionDuration: "220ms",
+                    transitionProperty: "transform, opacity",
+                  }}
                 >
                   {item.label}
                 </button>
