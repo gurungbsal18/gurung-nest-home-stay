@@ -1,4 +1,5 @@
 "use client"
+
 import { fadeInUp, staggerContainer } from "@/lib/animation"
 import { motion } from "framer-motion"
 import {
@@ -40,71 +41,78 @@ const reviewDb = [
 
 function GuestReviewSection() {
   return (
-    <div className="container mx-auto">
-      <motion.div
-        className="mb-14 flex flex-col items-center gap-2"
-        variants={staggerContainer}
-        initial="hidden"
-        whileInView={"visible"}
-      >
-        <motion.h4
-          className="text-3xl font-bold sm:text-4xl lg:text-5xl"
-          variants={fadeInUp}
-        >
-          <span className="text-primary">Guest</span> Review
-        </motion.h4>
-        <motion.p className="text-center font-medium" variants={fadeInUp}>
-          Hear from our guests about their experience.
-        </motion.p>
-      </motion.div>
-
-      {/* review carousel */}
-
-      {/* <Carousel className="w-full max-w-[12rem] sm:max-w-xs"> */}
-      <motion.div
-        variants={staggerContainer}
-        initial="hidden"
-        whileInView={"visible"}
-      >
-        <motion.div className="flex w-full justify-center" variants={fadeInUp}>
-          <Carousel
-            className="flex w-full flex-col justify-center md:max-w-150"
-            opts={{
-              loop: true,
-            }}
-            plugins={[
-              Autoplay({
-                delay: 2000,
-              }),
-            ]}
+    <>
+      {reviewDb.length > 0 && (
+        <div className="container mx-auto">
+          <motion.div
+            className="mb-14 flex flex-col items-center gap-2"
+            variants={staggerContainer}
+            initial="hidden"
+            whileInView="visible"
           >
-            <CarouselContent>
-              {reviewDb.map((list) => (
-                <CarouselItem key={list.id}>
-                  <div className="p-1">
-                    <Card>
-                      <CardContent className="flex flex-col items-start justify-start gap-8 p-6">
-                        <p className="text-lg font-medium text-gray-500 italic">
-                          "{list.review}"
-                        </p>
-                        <div className="flex flex-col">
-                          <p className="font-bold">{list.name}</p>
-                          <p className="text-sm text-gray-500">
-                            {list.location}
-                          </p>
-                        </div>
-                      </CardContent>
-                    </Card>
-                  </div>
-                </CarouselItem>
-              ))}
-            </CarouselContent>
-            <CarouselPrevious className="hidden md:block" />
-            <CarouselNext className="hidden md:block" />
-          </Carousel>
-        </motion.div>
-      </motion.div>
-    </div>
+            <motion.h4
+              className="text-3xl font-bold sm:text-4xl lg:text-5xl"
+              variants={fadeInUp}
+            >
+              <span className="text-primary">Guest</span> Review
+            </motion.h4>
+
+            <motion.p className="text-center font-medium" variants={fadeInUp}>
+              Hear from our guests about their experience.
+            </motion.p>
+          </motion.div>
+
+          <motion.div
+            variants={staggerContainer}
+            initial="hidden"
+            whileInView="visible"
+          >
+            <motion.div
+              className="flex w-full justify-center"
+              variants={fadeInUp}
+            >
+              <Carousel
+                className="flex w-full flex-col justify-center md:max-w-150"
+                opts={{
+                  loop: true,
+                }}
+                plugins={[
+                  Autoplay({
+                    delay: 2000,
+                  }),
+                ]}
+              >
+                <CarouselContent>
+                  {reviewDb.map((list) => (
+                    <CarouselItem key={list.id}>
+                      <div className="p-1">
+                        <Card>
+                          <CardContent className="flex flex-col items-start justify-start gap-8 p-6">
+                            <p className="text-lg font-medium text-gray-500 italic">
+                              &ldquo;{list.review}&rdquo;
+                            </p>
+
+                            <div className="flex flex-col">
+                              <p className="font-bold">{list.name}</p>
+                              <p className="text-sm text-gray-500">
+                                {list.location}
+                              </p>
+                            </div>
+                          </CardContent>
+                        </Card>
+                      </div>
+                    </CarouselItem>
+                  ))}
+                </CarouselContent>
+
+                <CarouselPrevious className="hidden md:block" />
+                <CarouselNext className="hidden md:block" />
+              </Carousel>
+            </motion.div>
+          </motion.div>
+        </div>
+      )}
+    </>
   )
 }
 

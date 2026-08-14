@@ -76,7 +76,7 @@ function HeroSection() {
         >
           <Link href={""}>
             <motion.button
-              className="flex h-8 items-center justify-center gap-2 rounded-xl bg-primary px-8 py-6 duration-500 ease-in-out hover:bg-primary/80 md:h-16"
+              className="flex h-8 items-center justify-center gap-2 rounded-xl bg-primary px-8 py-6 duration-500 ease-in-out hover:bg-primary/80 md:h-14"
               variants={fadeIn}
             >
               <LuCalendarDays size={"24"} />
@@ -85,7 +85,7 @@ function HeroSection() {
           </Link>
           <Link href="#">
             <motion.button
-              className="flex h-8 w-full items-center justify-center rounded-xl border border-white px-8 py-6 duration-500 ease-in-out hover:border-primary hover:bg-primary md:h-16"
+              className="flex h-8 w-full items-center justify-center rounded-xl border border-white px-8 py-6 duration-500 ease-in-out hover:border-primary hover:bg-primary md:h-14"
               variants={fadeIn}
             >
               Explore Rooms
