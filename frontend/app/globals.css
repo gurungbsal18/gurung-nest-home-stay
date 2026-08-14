@@ -130,6 +130,8 @@
     }
   html {
     @apply font-sans;
+    scroll-behavior: smooth;
+    scroll-padding-top: 7rem;
     }
           h1,
   h2,

@@ -1,22 +1,22 @@
 "use client"
-import Link from "next/link"
 import { LuCalendarDays } from "react-icons/lu"
 import { GrLocation } from "react-icons/gr"
-import { motion, stagger, type Variants } from "framer-motion"
+import { motion } from "framer-motion"
 import { fadeIn, fadeInUp, staggerContainer } from "@/lib/animation"
 import { ChevronDown } from "lucide-react"
-import { Button } from "./ui/button"
-
-// const locationBadgeVariants: Variants = {
-//   hidden: { opacity: 0, y: -10 },
-//   visible: {
-//     opacity: 1,
-//     y: 0,
-//     transition: { duration: 0.4, ease: "easeOut" as const },
-//   },
-// }
 
 function HeroSection() {
+  const scrollToSection = (id: string) => {
+    const target = document.getElementById(id)
+
+    if (id === "home") {
+      window.scrollTo({ top: 0, behavior: "smooth" })
+      return
+    }
+
+    target?.scrollIntoView({ behavior: "smooth", block: "start" })
+  }
+
   return (
     <div
       className="relative overflow-hidden"
@@ -69,28 +69,28 @@ function HeroSection() {
         </motion.div>
 
         <motion.div
-          className="flex flex-col gap-2 md:flex-row md:gap-4"
+          className="flex w-full max-w-2xl flex-col items-stretch justify-center gap-3 sm:flex-row sm:items-center sm:gap-4"
           variants={staggerContainer}
           initial="hidden"
           whileInView={"visible"}
         >
-          <Link href={""}>
-            <motion.button
-              className="flex h-8 items-center justify-center gap-2 rounded-xl bg-primary px-8 py-6 duration-500 ease-in-out hover:bg-primary/80 md:h-14"
-              variants={fadeIn}
-            >
-              <LuCalendarDays size={"24"} />
-              Book Your Stay
-            </motion.button>
-          </Link>
-          <Link href="#">
-            <motion.button
-              className="flex h-8 w-full items-center justify-center rounded-xl border border-white px-8 py-6 duration-500 ease-in-out hover:border-primary hover:bg-primary md:h-14"
-              variants={fadeIn}
-            >
-              Explore Rooms
-            </motion.button>
-          </Link>
+          <motion.button
+            type="button"
+            onClick={() => scrollToSection("contact")}
+            className="group inline-flex min-h-14 w-full items-center justify-center gap-2 rounded-full border border-transparent bg-primary px-7 py-4 text-sm font-semibold text-primary-foreground shadow-xl shadow-primary/25 transition-all duration-300 ease-out hover:-translate-y-0.5 hover:bg-primary/90 hover:shadow-2xl hover:shadow-primary/30 sm:w-auto sm:min-w-56 sm:text-base"
+            variants={fadeIn}
+          >
+            <LuCalendarDays size={20} className="transition-transform duration-300 group-hover:scale-110" />
+            Book Your Stay
+          </motion.button>
+          <motion.button
+            type="button"
+            onClick={() => scrollToSection("rooms")}
+            className="group inline-flex min-h-14 w-full items-center justify-center rounded-full border border-white/35 bg-white/10 px-7 py-4 text-sm font-semibold text-white backdrop-blur-md transition-all duration-300 ease-out hover:-translate-y-0.5 hover:border-primary/80 hover:bg-primary/20 sm:w-auto sm:min-w-56 sm:text-base"
+            variants={fadeIn}
+          >
+            Explore Rooms
+          </motion.button>
         </motion.div>
         <motion.div
           className="absolute bottom-8 left-1/2 z-[2] -translate-x-1/2"

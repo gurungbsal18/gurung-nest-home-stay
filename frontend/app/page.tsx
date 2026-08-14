@@ -12,22 +12,39 @@ import WhySection from "@/components/WhySection"
 export default function Page() {
   return (
     <>
-      <HeroSection />
+      <section id="home" className="scroll-mt-28">
+        <HeroSection />
+      </section>
       <div className="flex flex-col gap-32 pb-32">
-        <div
-          className="flex flex-col gap-16 py-32 md:gap-32 dark:bg-secondary/20!"
+        <section
+          id="about"
+          className="scroll-mt-28 flex flex-col gap-16 py-32 md:gap-32 dark:bg-secondary/20!"
           style={{ background: "#FBFAF8" }}
         >
           <AboutSection />
           <WhySection />
-        </div>
-        <EverythingYouNeedSection />
-        <Rooms />
-        <PanoramicExperience />
-        <GallerySection />
-        <AmenitiesSection />
-        <GuestReviewSection />
-        <BookingSection />
+        </section>
+        <section id="highlights" className="scroll-mt-28">
+          <EverythingYouNeedSection />
+        </section>
+        <section id="rooms" className="scroll-mt-28">
+          <Rooms />
+        </section>
+        <section id="attractions" className="scroll-mt-28">
+          <PanoramicExperience />
+        </section>
+        <section id="gallery" className="scroll-mt-28">
+          <GallerySection />
+        </section>
+        <section id="amenities" className="scroll-mt-28">
+          <AmenitiesSection />
+        </section>
+        <section id="reviews" className="scroll-mt-28">
+          <GuestReviewSection />
+        </section>
+        <section id="contact" className="scroll-mt-28">
+          <BookingSection />
+        </section>
       </div>
     </>
   )
