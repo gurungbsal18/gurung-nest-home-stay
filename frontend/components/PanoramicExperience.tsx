@@ -63,7 +63,7 @@ function PanoramicExperience() {
             </p>
           </motion.div>
           <motion.p className="font-heading italic" variants={fadeInUp}>
-            This is more than accommodation—it's an experience.
+            This is more than accommodation—it&apos;s an experience.
           </motion.p>
           <motion.div
             className="flex w-full justify-center md:justify-start"
