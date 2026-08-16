@@ -18,7 +18,7 @@ export default function Page() {
       <div className="flex flex-col gap-32 pb-32">
         <section
           id="about"
-          className="scroll-mt-28 flex flex-col gap-16 py-32 md:gap-32 dark:bg-secondary/20!"
+          className="flex scroll-mt-28 flex-col gap-16 py-32 md:gap-32 dark:bg-secondary/20!"
           style={{ background: "#FBFAF8" }}
         >
           <AboutSection />
@@ -42,9 +42,9 @@ export default function Page() {
         <section id="reviews" className="scroll-mt-28">
           <GuestReviewSection />
         </section>
-        <section id="contact" className="scroll-mt-28">
+        {/* <section id="contact" className="scroll-mt-28">
           <BookingSection />
-        </section>
+        </section> */}
       </div>
     </>
   )
