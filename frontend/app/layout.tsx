@@ -1,10 +1,12 @@
+"use client"
 import { Geist, Geist_Mono, DM_Sans, Playfair_Display } from "next/font/google"
 
 import "./globals.css"
 import { ThemeProvider } from "@/components/theme-provider"
-import { cn } from "@/lib/utils";
-import MainMenu from "@/components/MainMenu";
-import Footer from "@/components/Footer";
+import { cn } from "@/lib/utils"
+import MainMenu from "@/components/MainMenu"
+import Footer from "@/components/Footer"
+import WhatsAppWidget from "@/components/WhatsAppWidget"
 
 const playfairDisplayHeading = Playfair_Display({
   subsets: ["latin"],
@@ -32,13 +34,14 @@ export default function RootLayout({
         fontMono.variable,
         "font-sans",
         dmSans.variable,
-        playfairDisplayHeading.variable,
+        playfairDisplayHeading.variable
       )}
     >
       <body suppressHydrationWarning>
-        <MainMenu/>
+        <MainMenu />
         <ThemeProvider>{children}</ThemeProvider>
-        <Footer/>
+        <Footer />
+        <WhatsAppWidget />
       </body>
     </html>
   )
