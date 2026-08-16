@@ -6,14 +6,14 @@ function Footer() {
     <div className="border border-t-gray-200">
       <div className="container mx-auto py-16">
         <div className="flex flex-col items-center gap-8">
-          <div className="col-span-1 flex flex-col gap-2 lg:col-span-2">
+          <div className="flex flex-col items-center gap-2">
             <Image
               src="/images/logo.png"
               alt="Gurung Nest Home Stay"
               height={300}
               width={300}
             />
-            <p className="text-center text-sm text-gray-500">
+            <p className="rounded-full bg-primary/10 px-4 py-2 text-center text-xl font-semibold text-primary">
               Stay with Comfort, Feel Like Home
             </p>
           </div>
@@ -25,16 +25,20 @@ function Footer() {
             <p className="text-gray-500">Privacy Policy</p>
           </div> */}
 
-          <div className="text-center">
-            <p className="mb-2 text-center font-heading font-semibold text-primary">
-              Contact
+          <div className="flex flex-col gap-2 text-center">
+            <p className="text-center font-heading text-xl font-bold text-primary">
+              CONTACT
             </p>
             <p className="text-gray-500">Ramkot, Kathmandu, Nepal</p>
             <a href="tel:+9779700941788">
-              <p className="text-gray-500">+977 9700941788</p>
+              <p className="text-gray-500 hover:text-primary">
+                +977 9700941788
+              </p>
             </a>
             <a href="mailto:gurungnesthomestay@gmail.com">
-              <p className="text-gray-500">gurungnesthomestay@gmail.com</p>
+              <p className="text-gray-500 hover:text-primary">
+                gurungnesthomestay@gmail.com
+              </p>
             </a>
           </div>
         </div>

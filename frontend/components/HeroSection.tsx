@@ -74,7 +74,7 @@ function HeroSection() {
           initial="hidden"
           whileInView={"visible"}
         >
-          <motion.button
+          {/* <motion.button
             type="button"
             onClick={() => scrollToSection("contact")}
             className="group inline-flex min-h-14 w-full items-center justify-center gap-2 rounded-full border border-transparent bg-primary px-7 py-4 text-sm font-semibold text-primary-foreground shadow-xl shadow-primary/25 transition-all duration-300 ease-out hover:-translate-y-0.5 hover:bg-primary/90 hover:shadow-2xl hover:shadow-primary/30 sm:w-auto sm:min-w-56 sm:text-base"
@@ -82,7 +82,7 @@ function HeroSection() {
           >
             <LuCalendarDays size={20} className="transition-transform duration-300 group-hover:scale-110" />
             Book Your Stay
-          </motion.button>
+          </motion.button> */}
           <motion.button
             type="button"
             onClick={() => scrollToSection("rooms")}
