@@ -42,9 +42,9 @@ export default function Page() {
         <section id="reviews" className="scroll-mt-28">
           <GuestReviewSection />
         </section>
-        {/* <section id="contact" className="scroll-mt-28">
+        <section id="contact" className="scroll-mt-28">
           <BookingSection />
-        </section> */}
+        </section>
       </div>
     </>
   )

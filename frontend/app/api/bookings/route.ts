@@ -1,5 +1,8 @@
 import { randomUUID } from "crypto"
 import { NextResponse } from "next/server"
+import nodemailer from "nodemailer"
+
+export const runtime = "nodejs"
 
 type BookingPayload = {
   checkInDate?: string | null
@@ -24,6 +27,55 @@ type BookingRecord = {
 }
 
 const bookings: BookingRecord[] = []
+
+function getMailTransport() {
+  const gmailUser = process.env.GMAIL_USER
+  const gmailAppPassword = process.env.GMAIL_APP_PASSWORD
+
+  if (!gmailUser || !gmailAppPassword) {
+    return null
+  }
+
+  return nodemailer.createTransport({
+    service: "gmail",
+    auth: {
+      user: gmailUser,
+      pass: gmailAppPassword,
+    },
+  })
+}
+
+function formatBookingEmail(booking: BookingRecord) {
+  return [
+    "New booking request received",
+    "",
+    `Name: ${booking.firstName} ${booking.lastName}`,
+    `Phone: ${booking.phoneNumber}`,
+    `Check-in: ${booking.checkInDate}`,
+    `Check-out: ${booking.checkOutDate}`,
+    `Guests: ${booking.guests}`,
+    `Special request: ${booking.specialRequest || "None"}`,
+    `Booking ID: ${booking.id}`,
+    `Submitted at: ${booking.createdAt}`,
+  ].join("\n")
+}
+
+async function sendBookingEmail(booking: BookingRecord) {
+  const transport = getMailTransport()
+  const gmailUser = process.env.GMAIL_USER
+  const recipient = process.env.CONTACT_EMAIL ?? process.env.GMAIL_USER
+
+  if (!transport || !recipient || !gmailUser) {
+    return
+  }
+
+  await transport.sendMail({
+    from: gmailUser,
+    to: recipient,
+    subject: `New booking request from ${booking.firstName} ${booking.lastName}`,
+    text: formatBookingEmail(booking),
+  })
+}
 
 function readBookingPayload(body: unknown): BookingPayload {
   return body && typeof body === "object" ? (body as BookingPayload) : {}
@@ -137,6 +189,17 @@ export async function POST(request: Request) {
 
   if (!validation.ok) {
     return validation.response
+  }
+
+  try {
+    await sendBookingEmail(validation.booking)
+  } catch (error) {
+    console.error("Failed to send booking email:", error)
+
+    return NextResponse.json(
+      { message: "Booking saved, but email notification failed." },
+      { status: 500 }
+    )
   }
 
   const proxied = await forwardToBackend(payload)
