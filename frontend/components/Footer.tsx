@@ -33,7 +33,9 @@ function Footer() {
             <a href="tel:+9779700941788">
               <p className="text-gray-500">+977 9700941788</p>
             </a>
-            <p className="text-gray-500">info@gurungnesthomestay.com</p>
+            <a href="mailto:gurungnesthomestay@gmail.com">
+              <p className="text-gray-500">gurungnesthomestay@gmail.com</p>
+            </a>
           </div>
         </div>
       </div>
