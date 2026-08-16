@@ -30,7 +30,9 @@ function Footer() {
               Contact
             </p>
             <p className="text-gray-500">Ramkot, Kathmandu, Nepal</p>
-            <p className="text-gray-500">+977 9812345678</p>
+            <a href="tel:+9779700941788">
+              <p className="text-gray-500">+977 9700941788</p>
+            </a>
             <p className="text-gray-500">info@gurungnesthomestay.com</p>
           </div>
         </div>
