@@ -14,7 +14,7 @@ const navItems = [
   { label: "Gallery", id: "gallery" },
   { label: "Amenities", id: "amenities" },
   { label: "Attractions", id: "attractions" },
-  { label: "Contact", id: "contact" },
+  // { label: "Contact", id: "contact" },
 ] as const
 
 function MainMenu() {
