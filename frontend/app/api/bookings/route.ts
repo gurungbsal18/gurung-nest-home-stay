@@ -10,6 +10,7 @@ type BookingPayload = {
   guests?: string | number | null
   firstName?: string | null
   lastName?: string | null
+  email?: string | null
   phoneNumber?: string | null
   specialRequest?: string | null
 }
@@ -21,6 +22,7 @@ type BookingRecord = {
   guests: number
   firstName: string
   lastName: string
+  email: string
   phoneNumber: string
   specialRequest: string
   createdAt: string
@@ -50,6 +52,7 @@ function formatBookingEmail(booking: BookingRecord) {
     "New booking request received",
     "",
     `Name: ${booking.firstName} ${booking.lastName}`,
+    `Email: ${booking.email}`,
     `Phone: ${booking.phoneNumber}`,
     `Check-in: ${booking.checkInDate}`,
     `Check-out: ${booking.checkOutDate}`,
@@ -60,20 +63,44 @@ function formatBookingEmail(booking: BookingRecord) {
   ].join("\n")
 }
 
-async function sendBookingEmail(booking: BookingRecord) {
+function formatUserConfirmationEmail(booking: BookingRecord) {
+  return [
+    `Hello ${booking.firstName},`,
+    "",
+    "Your booking request has been received.",
+    "",
+    `Check-in: ${booking.checkInDate}`,
+    `Check-out: ${booking.checkOutDate}`,
+    `Guests: ${booking.guests}`,
+    `Phone: ${booking.phoneNumber}`,
+    `Special request: ${booking.specialRequest || "None"}`,
+    "",
+    "We will review your request and contact you soon.",
+  ].join("\n")
+}
+
+async function sendBookingEmails(booking: BookingRecord) {
   const transport = getMailTransport()
   const gmailUser = process.env.GMAIL_USER
-  const recipient = process.env.CONTACT_EMAIL ?? process.env.GMAIL_USER
+  const adminRecipient = process.env.CONTACT_EMAIL ?? process.env.GMAIL_USER
 
-  if (!transport || !recipient || !gmailUser) {
+  if (!transport || !adminRecipient || !gmailUser || !booking.email) {
     return
   }
 
   await transport.sendMail({
     from: gmailUser,
-    to: recipient,
+    to: adminRecipient,
     subject: `New booking request from ${booking.firstName} ${booking.lastName}`,
     text: formatBookingEmail(booking),
+    replyTo: booking.email,
+  })
+
+  await transport.sendMail({
+    from: gmailUser,
+    to: booking.email,
+    subject: "Your booking request has been received",
+    text: formatUserConfirmationEmail(booking),
   })
 }
 
@@ -89,6 +116,7 @@ function validateBooking(payload: BookingPayload) {
   if (!payload.guests) missingFields.push("guests")
   if (!payload.firstName) missingFields.push("firstName")
   if (!payload.lastName) missingFields.push("lastName")
+  if (!payload.email) missingFields.push("email")
   if (!payload.phoneNumber) missingFields.push("phoneNumber")
 
   if (missingFields.length > 0) {
@@ -136,6 +164,7 @@ function validateBooking(payload: BookingPayload) {
       guests: Number(payload.guests),
       firstName: String(payload.firstName).trim(),
       lastName: String(payload.lastName).trim(),
+      email: String(payload.email).trim(),
       phoneNumber: String(payload.phoneNumber).trim(),
       specialRequest: String(payload.specialRequest ?? "").trim(),
       createdAt: new Date().toISOString(),
@@ -192,7 +221,7 @@ export async function POST(request: Request) {
   }
 
   try {
-    await sendBookingEmail(validation.booking)
+    await sendBookingEmails(validation.booking)
   } catch (error) {
     console.error("Failed to send booking email:", error)
 

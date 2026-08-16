@@ -28,16 +28,6 @@ export function BookingForm() {
   const [submitError, setSubmitError] = React.useState<string | null>(null)
   const [acceptedTerms, setAcceptedTerms] = React.useState(false)
 
-  React.useEffect(() => {
-    if (!checkInDate || !checkOutDate) {
-      return
-    }
-
-    if (checkOutDate <= checkInDate) {
-      setCheckOutDate(undefined)
-    }
-  }, [checkInDate, checkOutDate])
-
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
 
@@ -50,6 +40,7 @@ export function BookingForm() {
       guests: formData.get("guests"),
       firstName: formData.get("firstName"),
       lastName: formData.get("lastName"),
+      email: formData.get("email"),
       phoneNumber: formData.get("phoneNumber"),
       specialRequest: formData.get("specialRequest"),
     }
@@ -107,6 +98,14 @@ export function BookingForm() {
   const minCheckoutDate = new Date(checkInDate ?? today)
   minCheckoutDate.setDate(minCheckoutDate.getDate() + 1)
 
+  const handleCheckInSelect = (date: Date | undefined) => {
+    setCheckInDate(date)
+
+    if (date && checkOutDate && checkOutDate <= date) {
+      setCheckOutDate(undefined)
+    }
+  }
+
   return (
     <div className="flex w-full justify-center">
       <form
@@ -135,7 +134,7 @@ export function BookingForm() {
                 <Calendar
                   mode="single"
                   selected={checkInDate}
-                  onSelect={setCheckInDate}
+                  onSelect={handleCheckInSelect}
                   disabled={(date) => date < today}
                 />
               </PopoverContent>
@@ -177,12 +176,16 @@ export function BookingForm() {
             <Input type="number" min={1} name="guests" required />
           </div>
           <div className="flex flex-col gap-2">
-            <Label>Phone Number</Label>
-            <Input type="tel" name="phoneNumber" required />
+            <Label>Email</Label>
+            <Input type="email" name="email" required />
           </div>
         </div>
 
         <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
+          <div className="flex flex-col gap-2">
+            <Label>Phone Number</Label>
+            <Input type="tel" name="phoneNumber" required />
+          </div>
           <div className="flex flex-col gap-2">
             <Label>First Name</Label>
             <Input type="text" name="firstName" required />
